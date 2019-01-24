@@ -1,0 +1,75 @@
+.app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.app__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 80px;
+
+}
+
+.app__title {
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+    text-transform: capitalize; 
+}
+
+.app__filter {
+    text-align: center;
+}
+
+.app__filter-name {
+    outline: none;
+}
+
+.app__main {
+    display: flex;
+    // width: 100%;
+    // height: 100%;
+    justify-content: center;
+}
+
+.app__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, 252px);
+    grid-gap: 20px;
+}
+
+.app__list-character {
+    border: 1px solid black;
+    background-color: salmon;
+}
+
+.character {
+    color: white;
+}
+
+.character__image-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 250px;
+}
+
+.character__image {
+    width: 250px;
+    height: 350px;
+    box-sizing: border-box;
+
+}
+
+.character__name {
+    text-align: center;
+}
+
+.character__house {
+    text-align: center;
+}
