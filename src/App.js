@@ -12,32 +12,51 @@ class App extends Component {
       query: '',
       results: []
     }
-    this.getCharactersHP();
+    // this.getCharactersHP();
     this.getQuery = this.getQuery.bind(this);
+    this.filterCharacters = this.filterCharacters.bind(this);
   }
 
-getQuery(e) {
-  const characterQuery = e.currentTarget.value;
-  this.setState({
-    query: characterQuery
-  });
+  componentDidMount() {
+    this.getCharactersHP();
+  }
 
-}
+  getQuery(e) {
+    const characterQuery = e.currentTarget.value;
+    this.setState({
+      query: characterQuery
+    });
 
+  }
 
-getCharactersHP() {
-  getCharacters()
-    .then(data => {
-
-      const cleanData = data.map((item, index) => {return{...item, id: index}});
-
-      this.setState({
-        results: cleanData
-      });
+  filterCharacters() {
+    const filteredResults = this.state.results.filter(item  => {
+      const name = item.name;
+      if (name.toLocaleUpperCase().includes(this.state.query.toLocaleUpperCase())) {
+        return true;
+      } else {
+        return false;
+      }
     })
-}
+    return filteredResults;
+  }
+
+  getCharactersHP() {
+    getCharacters()
+      .then(data => {
+
+        const cleanData = data.map((item, index) => {return{...item, id: index}});
+
+        this.setState({
+          results: cleanData
+        });
+      })
+  }
+
 
   render() {
+    const filterCharResults = this.filterCharacters();
+
     return (
       <div className="app">
         <header className="app__header">
@@ -48,13 +67,13 @@ getCharactersHP() {
         </header>
         <main className="app__main">
           <ul className="app__list">
-              {this.state.results.map((item, index) => {
+              {filterCharResults.map(item => {
                 return (
-                  <li className="app__list-character">
+                  <li className="app__list-character" key={item.id}>
                     <div className="image-container">
                       <img className="image-character" src={item.image} alt={item.name}></img>
                     </div>
-                    <h2 className="name-character" id={index} key={index}>{item.name}</h2>
+                    <h2 className="name-character">{item.name}</h2>
                     <p className="house-character">{item.house}</p>
                   </li>
                 )
