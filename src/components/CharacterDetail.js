@@ -28,7 +28,7 @@ class CharacterDetail extends Component {
                         </div>
                         <div className="character__items--detail">
                             <h2 className="character__name--detail">{name}</h2>
-                            <p className="character__house--detail">House: {house}</p>
+                            <p className="character__house--detail">House: {house ? house : '✖'}</p>
                             <p className="character__birth--detail">Year of Birth: {birth}</p>
                             <p className="character__patronus--detail">Patronus: {patronus ? patronus : '✖'}</p>
                             <p className="character__status--detail">Status: {alive ? 'Alive 😊' : 'Deceased 😵'} </p>
@@ -41,7 +41,6 @@ class CharacterDetail extends Component {
         } else {
             return (
                 <Fragment>
-                    <p>Pos no va</p>
                     <Link to="/">Mischief Managed</Link>
                 </Fragment>
             );

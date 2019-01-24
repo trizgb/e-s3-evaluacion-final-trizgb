@@ -11,7 +11,7 @@ class CharacterCard extends Component {
                     <img className="character__image" src={image} alt={name} />
                 </div>
                 <h2 className="character__name">{name}</h2>
-                <p className="character__house">{house}</p>
+                <p className="character__house">{house ? house : '✖'}</p>
             </div>
         );
     }
@@ -24,3 +24,5 @@ CharacterCard.propTypes = {
 }
 
 export default CharacterCard;
+
+// si la house es gryffindor pinta la tarjeta roja / si es slytherin pintala verde / si es ravenclaw pintala azul y si es hufflepuff pintala amarilla
