@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { getCharacters } from './services/HPService';
+import Filter from './components/Filter';
+import CharacterList from './components/CharacterList';
 import './App.scss';
 
 
 class App extends Component {
-
   constructor(props) {
     super(props);
 
@@ -12,7 +13,6 @@ class App extends Component {
       query: '',
       results: []
     }
-    // this.getCharactersHP();
     this.getQuery = this.getQuery.bind(this);
   }
 
@@ -59,26 +59,10 @@ class App extends Component {
       <div className="app">
         <header className="app__header">
           <h1 className="app__title">harry potter characters</h1>
-          <div className="app__filter">
-            <input type="text" className="app__filter-name" placeholder="Search the character" onKeyUp={this.getQuery} />
-          </div>
+         <Filter actionFilter={this.getQuery}/>
         </header>
         <main className="app__main">
-          <ul className="app__list">
-            {filterCharResults.map(item => {
-              return (
-                <li className="app__list-character" key={item.id}>
-                  <div className="character">
-                    <div className="character__image-container">
-                      <img className="character__image" src={item.image} alt={item.name}/>
-                    </div>
-                    <h2 className="character__name">{item.name}</h2>
-                    <p className="character__house">{item.house}</p>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
+         <CharacterList filterCharResults={filterCharResults}/>
         </main>
       </div>
     );
