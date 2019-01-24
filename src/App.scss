@@ -48,6 +48,10 @@
     background-color: salmon;
 }
 
+.app__list-link {
+    text-decoration: none;
+}
+
 .character {
     color: white;
 }
@@ -72,4 +76,10 @@
 
 .character__house {
     text-align: center;
+}
+
+// Detail
+
+.character--detail {
+    color: black;
 }

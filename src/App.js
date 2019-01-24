@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { getCharacters } from './services/HPService';
 import Filter from './components/Filter';
 import CharacterList from './components/CharacterList';
+import CharacterDetail from './components/CharacterDetail';
+import { Switch, Route } from 'react-router-dom';
 import './App.scss';
-
 
 class App extends Component {
   constructor(props) {
@@ -59,10 +60,18 @@ class App extends Component {
       <div className="app">
         <header className="app__header">
           <h1 className="app__title">harry potter characters</h1>
-         <Filter actionFilter={this.getQuery}/>
+
+          <Switch>
+            <Route exact path="/" render={() => <Filter actionFilter={this.getQuery} />} />
+          </Switch>
+
         </header>
+
         <main className="app__main">
-         <CharacterList filterCharResults={filterCharResults}/>
+          <Switch>
+            <Route exact path="/" render={() => <CharacterList filterCharResults={filterCharResults} /> } />
+            <Route path="/character/:id" render={props => <CharacterDetail match={props.match} filterCharResults={filterCharResults} charId={1} /> }  />
+          </Switch>
         </main>
       </div>
     );
