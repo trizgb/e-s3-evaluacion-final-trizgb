@@ -1,7 +1,10 @@
+// App
 .app {
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: url('hogwarts-castle-fog.jpg') center no-repeat;
 }
 
 .app__header {
@@ -34,6 +37,7 @@
     justify-content: center;
 }
 
+// List
 .app__list {
     margin: 0;
     padding: 0;
@@ -52,6 +56,8 @@
     text-decoration: none;
 }
 
+
+// Character
 .character {
     color: white;
 }
@@ -67,7 +73,6 @@
     width: 250px;
     height: 350px;
     box-sizing: border-box;
-
 }
 
 .character__name {
@@ -81,5 +86,53 @@
 // Detail
 
 .character--detail {
+    width: 500px;
+    height: 350px;
     color: black;
+    display: flex;
+    border: 1px solid black;
+    background-color: salmon;
+}
+
+.character__image-container--detail {
+
+}
+
+.character__image--detail {
+    width: 250px;
+    height: 350px;
+    box-sizing: border-box;
+}
+
+.character__items--detail {
+    margin-left: 20px;
+}
+
+.character__name--detail {
+
+}
+
+.character__house--detail {
+
+}
+
+.character__birth--detail {
+
+}
+
+.character__patronus--detail {
+
+}
+
+.character__status--detail {
+
+}
+
+.go__back {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
 }

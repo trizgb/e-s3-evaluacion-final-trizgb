@@ -4,16 +4,6 @@ import PropTypes from 'prop-types';
 
 class CharacterDetail extends Component {
 
-    // deadOrAlive() {
-    //     const { filterCharResults } = this.props;
-
-    //     if (filterCharResults.alive === true) {
-    //         return <p className="character__status--detail">Status: Alive</p>
-    //     } else {
-    //         return <p className="character__status--detail">Status: Deceased</p>
-    //     }
-    // }
-
     render() {
         const { filterCharResults } = this.props;
         const charId = this.props.match.params.id;
@@ -31,18 +21,22 @@ class CharacterDetail extends Component {
             const alive = selectedChar.alive;
 
             return (
-                <div className="character character--detail">
-                    <div className="character__image-container--detail">
-                        <img className="character__image--detail" src={image} alt={name} />
+                <Fragment>
+                    <div className="character character--detail">
+                        <div className="character__image-container--detail">
+                            <img className="character__image--detail" src={image} alt={name} />
+                        </div>
+                        <div className="character__items--detail">
+                            <h2 className="character__name--detail">{name}</h2>
+                            <p className="character__house--detail">House: {house}</p>
+                            <p className="character__birth--detail">Year of Birth: {birth}</p>
+                            <p className="character__patronus--detail">Patronus: {patronus ? patronus : '✖'}</p>
+                            <p className="character__status--detail">Status: {alive ? 'Alive 😊' : 'Deceased 😵'} </p>
+                        </div>
                     </div>
-                    <h2 className="character__name--detail">{name}</h2>
-                    <p className="character__house--detail">House: {house}</p>
-                    <p className="character__birth--detail">Year of Birth: {birth}</p>
-                    <p className="character__patronus--detail">Patronus: {patronus}</p>
-                    <p className="character__status--detail">Status: {alive ? 'Alive 😊' : 'Deceased 😵'} </p>
-                    <Link to="/">Mischief Managed</Link>
 
-                </div>
+                    <Link className="go__back" to="/"><span role="img" aria-label="Back">🔙</span> Mischief Managed</Link>
+                </Fragment>
             );
         } else {
             return (
