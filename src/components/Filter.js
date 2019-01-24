@@ -6,7 +6,7 @@ class Filter extends Component {
         const {actionFilter} = this.props;
         return (
             <div className="app__filter">
-                <input type="text" className="app__filter-name" placeholder="Search the character" onKeyUp={actionFilter} />
+                <input type="text" className="app__filter-name" placeholder="Accio character" onKeyUp={actionFilter} />
             </div>
         );
     }
