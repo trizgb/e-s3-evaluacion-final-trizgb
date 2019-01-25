@@ -7,9 +7,7 @@ class CharacterCard extends Component {
         const { image, name, house } = this.props;
         return (
             <div className="character">
-                <div className="character__image-container">
-                    <img className="character__image" src={image} alt={name} />
-                </div>
+                <img className="character__image" src={image} alt={name} />
                 <h2 className="character__name">{name}</h2>
                 <p className="character__house">{house ? house : '✖'}</p>
             </div>

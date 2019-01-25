@@ -21,26 +21,24 @@ class CharacterDetail extends Component {
             const alive = selectedChar.alive;
 
             return (
-                <Fragment>
-                    <div className="character character--detail">
-                        <div className="character__image-container--detail">
-                            <img className="character__image--detail" src={image} alt={name} />
-                        </div>
+                <div className="container__character--detail">
+                    <div className="character--detail">
+                        <img className="character__image--detail" src={image} alt={name} />
                         <div className="character__items--detail">
                             <h2 className="character__name--detail">{name}</h2>
                             <p className="character__house--detail">House: {house ? house : '✖'}</p>
-                            <p className="character__birth--detail">Year of Birth: {birth}</p>
+                            <p className="character__birth--detail">Year of Birth: {birth ? birth : '✖'}</p>
                             <p className="character__patronus--detail">Patronus: {patronus ? patronus : '✖'}</p>
                             <p className="character__status--detail">Status: {alive ? 'Alive 😊' : 'Deceased 😵'} </p>
                         </div>
                     </div>
-
                     <Link className="go__back" to="/"><span role="img" aria-label="Back">🔙</span> Mischief Managed</Link>
-                </Fragment>
+                </div>
             );
         } else {
             return (
                 <Fragment>
+                    <p>We could all have been killed - or worse, expelled</p>
                     <Link to="/">Mischief Managed</Link>
                 </Fragment>
             );

@@ -15,6 +15,7 @@ class App extends Component {
       results: []
     }
     this.getQuery = this.getQuery.bind(this);
+    this.filterCharacters = this.filterCharacters.bind(this);
   }
 
   componentDidMount() {
@@ -73,6 +74,9 @@ class App extends Component {
             <Route path="/character/:id" render={props => <CharacterDetail match={props.match} filterCharResults={filterCharResults} charId={1} /> }  />
           </Switch>
         </main>
+        <footer className="footer">
+          <p className="footer__text">Beatriz Gomez | © Adalab 2019</p>
+        </footer>
       </div>
     );
   }
