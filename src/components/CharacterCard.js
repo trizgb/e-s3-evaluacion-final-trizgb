@@ -22,5 +22,3 @@ CharacterCard.propTypes = {
 }
 
 export default CharacterCard;
-
-// si la house es gryffindor pinta la tarjeta roja / si es slytherin pintala verde / si es ravenclaw pintala azul y si es hufflepuff pintala amarilla

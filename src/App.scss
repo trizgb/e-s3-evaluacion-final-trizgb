@@ -35,99 +35,15 @@
     justify-content: center;
 }
 
-// List
-.app__list {
-    margin: 0 auto 80px;
-    padding: 0;
-    width: 100%;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 202px);
-    grid-gap: 20px;
-    justify-content: center;
-}
+// Character List
+@import 'styles/character-list';
 
-.app__list-character {
-    border: 1px solid black;
-    background-color: rgba(71, 65, 65, 0.575);
-    border-radius: 10px;
-}
-
-.app__list-link {
-    text-decoration: none;
-}
-
-// Character
-.character {
-    color: white;
-}
-
-.character__image {
-    width: 200px;
-    height: 250px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.character__name {
-    text-align: center;
-}
-
-.character__house {
-    text-align: center;
-}
+// Character Card
+@import 'styles/character-card';
 
 // Detail
-.container__character--detail {
-    display: flex;
-    flex-direction: column;
-}
+@import 'styles/character-detail';
 
-.character--detail {
-    display: grid;
-    width: 500px;
-    height: 350px;
-    display: flex;
-    border: 1px solid black;
-    background-color: rgba(71, 65, 65, 0.575);
-    border-radius: 10px;
-    margin: 0 0 30px 0;
-    color: white;
-}
+// Footer
 
-.character__image--detail {
-    width: 250px;
-    height: 350px;
-    border-top-left-radius: 9px;
-    border-bottom-left-radius: 9px;
-}
-
-.character__items--detail {
-    margin-left: 20px;
-}
-
-.go__back {
-    color: white;
-    font-weight: 550;
-    text-transform: capitalize;
-    text-decoration: none;
-    text-align: center;
-    padding: 5px 0;
-    margin-bottom: 80px;
-    width: 200px;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(51, 87, 107);
-}
-
-.footer__text {
-    text-transform: uppercase;
-    color: white;
-}
+@import 'styles/footer';

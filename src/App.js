@@ -70,13 +70,12 @@ class App extends Component {
 
         <main className="app__main">
           <Switch>
-            <Route exact path="/" render={() => <CharacterList filterCharResults={filterCharResults} /> } />
-            <Route path="/character/:id" render={props => <CharacterDetail match={props.match} filterCharResults={filterCharResults} charId={1} /> }  />
+            <Route exact path="/" render={() => <CharacterList filterCharResults={filterCharResults} />} />
+            <Route path="/character/:id" render={props => <CharacterDetail match={props.match} filterCharResults={this.state.results} charId={1} />} />
           </Switch>
         </main>
         <footer className="footer">
-          <p className="footer__text">Beatriz Gomez | © Adalab 2019</p>
-        </footer>
+          <p className="footer__text">Beatriz Gomez | © Adalab 2019</p></footer>
       </div>
     );
   }

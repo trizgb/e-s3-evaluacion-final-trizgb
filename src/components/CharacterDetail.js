@@ -4,12 +4,24 @@ import PropTypes from 'prop-types';
 
 class CharacterDetail extends Component {
 
+    handleHouse(hogwarts) {
+        if ((hogwarts) === 'Gryffindor') {
+            return 'Gryffindor 🦁'
+        } else if ((hogwarts) === 'Slytherin') {
+            return 'Slytherin 🐍'
+        } else if ((hogwarts) === 'Ravenclaw') {
+            return 'Ravenclaw 🦅'
+        } else if ((hogwarts) === 'Hufflepuff') {
+            return 'Hufflepuff 🐿'
+        } else {
+            return '✖'
+        }
+    }
+
     render() {
         const { filterCharResults } = this.props;
         const charId = this.props.match.params.id;
-
-
-
+ 
         if (filterCharResults.length > 0 && charId < filterCharResults.length) {
             const selectedChar = filterCharResults[charId];
 
@@ -26,7 +38,7 @@ class CharacterDetail extends Component {
                         <img className="character__image--detail" src={image} alt={name} />
                         <div className="character__items--detail">
                             <h2 className="character__name--detail">{name}</h2>
-                            <p className="character__house--detail">House: {house ? house : '✖'}</p>
+                            <p className="character__house--detail">House: {this.handleHouse(house)}</p>
                             <p className="character__birth--detail">Year of Birth: {birth ? birth : '✖'}</p>
                             <p className="character__patronus--detail">Patronus: {patronus ? patronus : '✖'}</p>
                             <p className="character__status--detail">Status: {alive ? 'Alive 😊' : 'Deceased 😵'} </p>
