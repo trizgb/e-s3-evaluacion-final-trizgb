@@ -12,9 +12,11 @@ class App extends Component {
 
     this.state = {
       query: '',
+      houseQuery: '',
       results: []
     }
     this.getQuery = this.getQuery.bind(this);
+    this.getHouseQuery = this.getHouseQuery.bind(this);
     this.filterCharacters = this.filterCharacters.bind(this);
   }
 
@@ -28,6 +30,22 @@ class App extends Component {
       query: characterQuery
     });
 
+  }
+
+  getHouseQuery(e) {
+    const houseQuery = e.currentTarget.value;
+    this.setState({
+      houseQuery: houseQuery
+    })
+  }
+
+  filterHouse() {
+    const {houseQuery} = this.state;
+    if (houseQuery === 'no') {
+      return this.state.results.filter(item => item.house === '')
+    } else {
+    return this.state.results.filter(item => item.house.toLocaleUpperCase().includes(this.state.houseQuery.toLocaleUpperCase()))
+  }
   }
 
   filterCharacters() {
@@ -55,7 +73,8 @@ class App extends Component {
   }
 
   render() {
-    const filterCharResults = this.filterCharacters();
+    // const filterCharResults = this.filterCharacters();
+    const filterHouResults = this.filterHouse();
 
     return (
       <div className="app">
@@ -63,14 +82,14 @@ class App extends Component {
           <h1 className="app__title">harry potter characters</h1>
 
           <Switch>
-            <Route exact path="/" render={() => <Filter actionFilter={this.getQuery} />} />
+            <Route exact path="/" render={() => <Filter actionFilter={this.getQuery} actionHouse={this.getHouseQuery} />} />
           </Switch>
 
         </header>
 
         <main className="app__main">
           <Switch>
-            <Route exact path="/" render={() => <CharacterList filterCharResults={filterCharResults} />} />
+            <Route exact path="/" render={() => <CharacterList filterCharResults={filterHouResults} />} />
             <Route path="/character/:id" render={props => <CharacterDetail match={props.match} filterCharResults={this.state.results} charId={1} />} />
           </Switch>
         </main>
