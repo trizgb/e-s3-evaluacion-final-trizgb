@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CharacterCard from './CharacterCard';
+import Card from './card';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -12,10 +12,10 @@ class CharacterList extends Component {
                     return (
                         <li className="app__list-character" key={item.id}>
                             <Link className="app__list-link" to={`/character/${item.id}`}>
-                                <CharacterCard
+                                <Card
                                     image={item.image}
-                                    name={item.name}
-                                    house={item.house}
+                                    title={item.name}
+                                    subtitle={item.house}
                                 />
                             </Link>
                         </li>

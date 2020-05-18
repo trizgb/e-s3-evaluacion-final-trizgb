@@ -1,9 +1,18 @@
-// App
-.app {
+* {
     margin: 0;
     padding: 0;
-    background-image: url('images/hogwarts-castle-fog.jpg');
-    background-repeat: no-repeat;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+// App
+.app {
+    background: url("images/hogwarts-castle.jpg") no-repeat ;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -13,21 +22,13 @@
     flex-direction: column;
     justify-content: center;
     margin-bottom: 50px;
+    background: #2a2d3bd4;
+    height: 80px;
 }
 
 .app__title {
-    margin: 0;
-    padding: 50px 0;
     text-align: center;
-    text-transform: uppercase; 
-}
-
-.app__filter {
-    text-align: center;
-}
-
-.app__filter-name {
-    outline: none;
+    text-transform: uppercase;
 }
 
 .app__main {
@@ -36,14 +37,11 @@
 }
 
 // Character List
-@import 'styles/character-list';
-
-// Character Card
-@import 'styles/character-card';
+@import "styles/character-list";
 
 // Detail
-@import 'styles/character-detail';
+@import "styles/character-detail";
 
 // Footer
 
-@import 'styles/footer';
+@import "styles/footer";

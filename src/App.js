@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getCharacters } from './services/HPService';
-import Filter from './components/Filter';
+import Search from './components/search/index';
 import CharacterList from './components/CharacterList';
 import CharacterDetail from './components/CharacterDetail';
 import { Switch, Route } from 'react-router-dom';
@@ -14,15 +14,13 @@ class App extends Component {
       query: '',
       results: []
     }
-    this.getQuery = this.getQuery.bind(this);
-    this.filterCharacters = this.filterCharacters.bind(this);
   }
 
   componentDidMount() {
     this.getCharactersHP();
   }
 
-  getQuery(e) {
+  getQuery = (e) => {
     const characterQuery = e.currentTarget.value;
     this.setState({
       query: characterQuery
@@ -63,7 +61,7 @@ class App extends Component {
           <h1 className="app__title">harry potter characters</h1>
 
           <Switch>
-            <Route exact path="/" render={() => <Filter actionFilter={this.getQuery} />} />
+            <Route exact path="/" render={() => <Search onKeyUpAction={this.getQuery} />} />
           </Switch>
 
         </header>
