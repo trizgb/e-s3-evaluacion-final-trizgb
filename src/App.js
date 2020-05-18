@@ -1,37 +1,24 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { getCharacters } from './services/HPService';
 import Search from './components/search/index';
-import CharacterList from './components/CharacterList';
-import CharacterDetail from './components/CharacterDetail';
+import List from './components/list/index';
+import Detail from './views/detail/index';
 import { Switch, Route } from 'react-router-dom';
-import './App.scss';
+import './app.scss';
+import Header from './components/header';
+import Footer from './components/footer';
+// import PropTypes from 'prop-types';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      query: '',
-      results: []
-    }
-  }
+const App = (props) => {
+  const [results, setResults] = React.useState([]);
+  const [search, setSearch] = React.useState('');
 
-  componentDidMount() {
-    this.getCharactersHP();
-  }
 
-  getQuery = (e) => {
-    const characterQuery = e.currentTarget.value;
-    this.setState({
-      query: characterQuery
-    });
-
-  }
-
-  filterCharacters() {
-    const filteredResults = this.state.results.filter(item => {
+  function filterCharacters() {
+    const filteredResults = results.filter(item => {
       const name = item.name;
-      if (name.toLocaleUpperCase().includes(this.state.query.toLocaleUpperCase())) {
+      if (name.toLocaleUpperCase().includes(search.toLocaleUpperCase())) {
         return true;
       } else {
         return false;
@@ -40,43 +27,36 @@ class App extends Component {
     return filteredResults;
   }
 
-  getCharactersHP() {
+  React.useEffect(() => {
+
+  }, [search, results]);
+
+  React.useEffect(() => {
     getCharacters()
       .then(data => {
-
         const cleanData = data.map((item, index) => { return { ...item, id: index } });
-
-        this.setState({
-          results: cleanData
-        });
+        setResults(cleanData);
       })
-  }
 
-  render() {
-    const filterCharResults = this.filterCharacters();
+  }, []);
 
-    return (
-      <div className="app">
-        <header className="app__header">
-          <h1 className="app__title">harry potter characters</h1>
-
-          <Switch>
-            <Route exact path="/" render={() => <Search onKeyUpAction={this.getQuery} />} />
-          </Switch>
-
-        </header>
-
-        <main className="app__main">
-          <Switch>
-            <Route exact path="/" render={() => <CharacterList filterCharResults={filterCharResults} />} />
-            <Route path="/character/:id" render={props => <CharacterDetail match={props.match} filterCharResults={this.state.results} charId={1} />} />
-          </Switch>
-        </main>
-        <footer className="footer">
-          <p className="footer__text">Beatriz Gomez | © Adalab 2019</p></footer>
-      </div>
-    );
-  }
+  return (
+    <div className="app">
+      <Header title={'harry potter characters'}>
+        <Route exact path={'/'} render={() => <Search onKeyUpAction={(e) => {
+          filterCharacters();
+          setSearch(e.currentTarget.value)
+        }} />} />
+      </Header>
+      <main className="main">
+        <Switch>
+          <Route exact path={'/'} render={() => <List items={results} />} />
+          <Route path={'/character/:id'} render={() => <Detail match={props.match} filterResults={results} charId={1} />} />
+        </Switch>
+      </main>
+      <Footer />
+    </div>
+  )
 }
 
 export default App;

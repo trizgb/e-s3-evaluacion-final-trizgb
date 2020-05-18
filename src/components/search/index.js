@@ -5,8 +5,6 @@ require('./index.scss');
 
 const Search = ({ onKeyUpAction, onSearch }) => {
 
-    const [value, setValue] = React.useState('');
-
     return (
         <div className="search">
             <input
@@ -14,10 +12,7 @@ const Search = ({ onKeyUpAction, onSearch }) => {
                 className="search-input"
                 placeholder="Accio character"
                 onKeyUp={onKeyUpAction}
-                onChange={(e) => setValue(e.currentTarget.value)}
-                // defaultValue={value}
             />
-            {/* <button onClick={onSearch}>Search</button> */}
         </div>
     )
 }

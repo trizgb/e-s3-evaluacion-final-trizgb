@@ -4,6 +4,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
+    // font-family: "Satisfy", cursive;
 }
 
 a {
@@ -12,36 +13,12 @@ a {
 
 // App
 .app {
-    background: url("images/hogwarts-castle.jpg") no-repeat ;
+    background: url("./assets/images/hogwarts-castle.jpg") no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
-.app__header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 50px;
-    background: #2a2d3bd4;
-    height: 80px;
-}
-
-.app__title {
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.app__main {
+.main {
     display: flex;
     justify-content: center;
 }
-
-// Character List
-@import "styles/character-list";
-
-// Detail
-@import "styles/character-detail";
-
-// Footer
-
-@import "styles/footer";
